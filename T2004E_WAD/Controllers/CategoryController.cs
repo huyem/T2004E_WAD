@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using T2004E_WAD.Models;
 
 namespace T2004E_WAD.Controllers
 {
@@ -11,7 +12,17 @@ namespace T2004E_WAD.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View();
+            //truyen bang viewdata
+            ViewData["Message"] = "HelloWord";
+            ViewData["CurrentTime"] = DateTime.Now;
+
+            //truyen bang viewbag
+            ViewBag.Message = "HelloWord";
+            ViewBag.CurrentTime = DateTime.Now;
+
+            Category category = new Category() { Name = "Watch", Image = "abc.png", Description = "watch description" };
+
+            return View(category);
         }
 
         // GET: Category/Details/5
@@ -23,22 +34,29 @@ namespace T2004E_WAD.Controllers
         // GET: Category/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
         // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        
+        public ActionResult Create(Category category)
         {
             try
             {
                 // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(category);
 
-                return RedirectToAction("Index");
+
             }
             catch
             {
-                return View();
+                return View(category);
             }
         }
 
