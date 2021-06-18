@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Category/Create</h3>
+    </div>
+    <!-- /.card-header -->
+    <form>
+        <div class="card-body">
+            <h4>Input Product</h4>
+
+            <div class="form-group">
+                <label for="exampleInputRounded0">Name</label>
+                <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+            </div>
+            <div class="form-group">
+                <!-- select -->
+                <div class="col-sm-6">
+                    <label>Brand</label>
+                    <select class="form-control">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                        <option>option 5</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputRounded0">Qty</label>
+                <input class="form-control form-control-lg" type="text" placeholder="Đơn vị:SP">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputRounded0">Price</label>
+                <input class="form-control form-control-lg" type="text" placeholder="Đơn vị:USD">
+            </div>
+            <div class="form-group">
+                <label for="customFile">Imge</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- /.card-body -->
+</div>
+
