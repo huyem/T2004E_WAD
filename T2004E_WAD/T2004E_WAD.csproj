@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,17 +126,79 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BrandController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\User\Controllers\HomeController.cs" />
+    <Compile Include="Areas\User\Controllers\UserController.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\User\Content\css\style.css" />
+    <Content Include="Areas\User\Content\img\brand-1.png" />
+    <Content Include="Areas\User\Content\img\brand-2.png" />
+    <Content Include="Areas\User\Content\img\brand-3.png" />
+    <Content Include="Areas\User\Content\img\brand-4.png" />
+    <Content Include="Areas\User\Content\img\brand-5.png" />
+    <Content Include="Areas\User\Content\img\brand-6.png" />
+    <Content Include="Areas\User\Content\img\category-1.jpg" />
+    <Content Include="Areas\User\Content\img\category-2.jpg" />
+    <Content Include="Areas\User\Content\img\category-3.jpg" />
+    <Content Include="Areas\User\Content\img\category-4.jpg" />
+    <Content Include="Areas\User\Content\img\category-5.jpg" />
+    <Content Include="Areas\User\Content\img\category-6.jpg" />
+    <Content Include="Areas\User\Content\img\category-7.jpg" />
+    <Content Include="Areas\User\Content\img\category-8.jpg" />
+    <Content Include="Areas\User\Content\img\godaddy.svg" />
+    <Content Include="Areas\User\Content\img\logo.png" />
+    <Content Include="Areas\User\Content\img\norton.svg" />
+    <Content Include="Areas\User\Content\img\payment-method.png" />
+    <Content Include="Areas\User\Content\img\product-1.jpg" />
+    <Content Include="Areas\User\Content\img\product-10.jpg" />
+    <Content Include="Areas\User\Content\img\product-2.jpg" />
+    <Content Include="Areas\User\Content\img\product-3.jpg" />
+    <Content Include="Areas\User\Content\img\product-4.jpg" />
+    <Content Include="Areas\User\Content\img\product-5.jpg" />
+    <Content Include="Areas\User\Content\img\product-6.jpg" />
+    <Content Include="Areas\User\Content\img\product-7.jpg" />
+    <Content Include="Areas\User\Content\img\product-8.jpg" />
+    <Content Include="Areas\User\Content\img\product-9.jpg" />
+    <Content Include="Areas\User\Content\img\review-1.jpg" />
+    <Content Include="Areas\User\Content\img\review-2.jpg" />
+    <Content Include="Areas\User\Content\img\review-3.jpg" />
+    <Content Include="Areas\User\Content\img\slider-1.jpg" />
+    <Content Include="Areas\User\Content\img\slider-2.jpg" />
+    <Content Include="Areas\User\Content\img\slider-3.jpg" />
+    <Content Include="Areas\User\Content\img\ssl.svg" />
+    <Content Include="Areas\User\Content\js\main.js" />
+    <Content Include="Areas\User\Content\lib\easing\easing.js" />
+    <Content Include="Areas\User\Content\lib\easing\easing.min.js" />
+    <Content Include="Areas\User\Content\lib\slick\ajax-loader.gif" />
+    <Content Include="Areas\User\Content\lib\slick\fonts\slick.svg" />
+    <Content Include="Areas\User\Content\lib\slick\slick-theme.css" />
+    <Content Include="Areas\User\Content\lib\slick\slick.css" />
+    <Content Include="Areas\User\Content\lib\slick\slick.js" />
+    <Content Include="Areas\User\Content\lib\slick\slick.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2102,6 +2170,43 @@
     <Content Include="Content\plugins\summernote\summernote.js.map" />
     <Content Include="Content\plugins\summernote\summernote.min.js.map" />
     <Content Include="Content\plugins\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Aside.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\User\Views\Shared\User_layout.cshtml" />
+    <Content Include="Areas\User\Views\Home\Index.cshtml" />
+    <Content Include="Areas\User\Content\lib\slick\config.rb" />
+    <Content Include="Areas\User\Content\lib\slick\fonts\slick.eot" />
+    <Content Include="Areas\User\Content\lib\slick\fonts\slick.ttf" />
+    <Content Include="Areas\User\Content\lib\slick\fonts\slick.woff" />
+    <Content Include="Areas\User\Content\lib\slick\slick-theme.less" />
+    <Content Include="Areas\User\Content\lib\slick\slick-theme.scss" />
+    <Content Include="Areas\User\Content\lib\slick\slick.less" />
+    <Content Include="Areas\User\Content\lib\slick\slick.scss" />
+    <Content Include="Areas\User\Views\User\Register.cshtml" />
+    <Content Include="Areas\User\Views\User\Login.cshtml" />
+    <Content Include="Areas\User\Views\User\Index.cshtml" />
+    <Content Include="Areas\User\Views\Home\Cart.cshtml" />
+    <Content Include="Areas\User\Views\Home\CheckOut.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2113,6 +2218,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\Avatar-Dep-Taihinhanh-Vn %289%29.jpg" />
+    <Content Include="Uploads\brand-1.png" />
+    <Content Include="Uploads\brand-2.png" />
+    <Content Include="Uploads\brand-3.png" />
+    <Content Include="Uploads\brand-4.png" />
+    <Content Include="Uploads\brand-5.png" />
+    <Content Include="Uploads\brand-6.png" />
+    <Content Include="Uploads\category-2.jpg" />
+    <Content Include="Uploads\product-1.jpg" />
+    <Content Include="Uploads\product-10.jpg" />
+    <Content Include="Uploads\review-2.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2120,36 +2236,47 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Demo.cshtml" />
+    <Content Include="Views\Brands\Create.cshtml" />
+    <Content Include="Views\Brands\Delete.cshtml" />
+    <Content Include="Views\Brands\Details.cshtml" />
+    <Content Include="Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Brands\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Category cu\Create.cshtml" />
+    <Content Include="Views\Category cu\Details.cshtml" />
+    <Content Include="Views\Category cu\Edit.cshtml" />
+    <Content Include="Views\Category cu\Index.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Demo\SayHello.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Demo.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Products\Cart.cshtml" />
+    <Content Include="Views\Products\CheckOut.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Aside.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Category\Edit.cshtml" />
-    <Content Include="Views\Category\Details.cshtml" />
-    <Content Include="Views\Category\Create.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Brand\Create.cshtml" />
-    <Content Include="Views\Brand\Index.cshtml" />
-    <Content Include="Views\Brand\Edit.cshtml" />
-    <Content Include="Views\Brand\Details.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\User\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
