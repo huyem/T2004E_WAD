@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,140 +11,107 @@ using T2004E_WAD.Models;
 
 namespace T2004E_WAD.Areas.Admin.Controllers
 {
-    public class BrandsController : Controller
+    public class UsersController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Admin/Brands
+        // GET: Admin/Users
         public ActionResult Index()
         {
-            return View(db.Brands.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: Admin/Brands/Details/5
+        // GET: Admin/Users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Models.User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(user);
         }
 
-        // GET: Admin/Brands/Create
+        // GET: Admin/Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Brands/Create
+        // POST: Admin/Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Describe")] Brand brand,HttpPostedFileBase Image)
+        public ActionResult Create([Bind(Include = "Id,Name,Email,Password,ConfirmPassword")] Models.User user)
         {
-            String brandImage = "Uploads/product-1.jpg";
-            // upload file len thu muc upload
-            //luu ten file vao brands
-           
-                //Method 2 Get file details from HttpPostedFileBase class    
-
-                //if (brand != null)
-                //{
-                //    string path = Path.Combine(Server.MapPath("~/Files"), Path.GetFileName(brand.Image));
-
-                //}
-                if (Image != null)
-                {
-                    string fileName = Path.GetFileName(Image.FileName);
-                    string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
-                    Image.SaveAs(path);
-                    brandImage = "Uploads/" + fileName;
-                }
-                brand.Image = brandImage;
-           
-           
-
             if (ModelState.IsValid)
             {
-              
-                db.Brands.Add(brand);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(brand);
+            return View(user);
         }
 
-        // GET: Admin/Brands/Edit/5
+        // GET: Admin/Users/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Models.User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(user);
         }
 
-        // POST: Admin/Brands/Edit/5
+        // POST: Admin/Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Describe")] Brand brand, HttpPostedFileBase Image)
+        public ActionResult Edit([Bind(Include = "Id,Name,Email,Password,ConfirmPassword")] Models.User user)
         {
-            String brandImage = "Uploads/product-1.jpg";
-
-            if(Image != null)
-            {
-                string fileImage = Path.GetFileName(Image.FileName);
-                string path = Path.Combine(Server.MapPath("~/Uploads"), fileImage);
-                Image.SaveAs(path);
-                brandImage = "Uploads/" + fileImage;
-            }
-            brand.Image = brandImage;
             if (ModelState.IsValid)
             {
-                db.Entry(brand).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(brand);
+            return View(user);
         }
 
-        // GET: Admin/Brands/Delete/5
+        // GET: Admin/Users/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
+            Models.User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(brand);
+            return View(user);
         }
 
-        // POST: Admin/Brands/Delete/5
+        // POST: Admin/Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Brand brand = db.Brands.Find(id);
-            db.Brands.Remove(brand);
+            Models.User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

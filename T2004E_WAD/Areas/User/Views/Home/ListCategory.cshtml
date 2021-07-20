@@ -1,0 +1,81 @@
+﻿@model List<T2004E_WAD.Models.Category>
+
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+<!-- Feature Start-->
+@*<div class="feature">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <h2>Secure Payment</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur elit
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-truck"></i>
+                        <h2>Worldwide Delivery</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur elit
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-sync-alt"></i>
+                        <h2>90 Days Return</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur elit
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-comments"></i>
+                        <h2>24/7 Support</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur elit
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- Feature End-->
+<!-- Category Start-->
+<div class="category">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="category-item ch-400">
+                        <img src="~/@item.Image" />
+                        <a class="category-name" href="">
+                            <p>  @Html.DisplayFor(modelItem => item.Description)</p>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</div>
