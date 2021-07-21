@@ -135,14 +135,8 @@
     <Compile Include="Areas\User\Code\ProductCategoryDao.cs" />
     <Compile Include="Areas\User\Controllers\HomeController.cs" />
     <Compile Include="Areas\User\Controllers\ProductController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Context\DataContext.cs" />
-    <Compile Include="Controllers\BrandsController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2207,9 +2201,6 @@
     <Content Include="Areas\User\Content\lib\slick\slick-theme.scss" />
     <Content Include="Areas\User\Content\lib\slick\slick.less" />
     <Content Include="Areas\User\Content\lib\slick\slick.scss" />
-    <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Areas\User\Views\Home\Cart.cshtml" />
     <Content Include="Areas\User\Views\Home\CheckOut.cshtml" />
     <Content Include="Areas\User\Views\Shared\Head.cshtml" />
@@ -2241,40 +2232,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Brands\Create.cshtml" />
-    <Content Include="Views\Brands\Delete.cshtml" />
-    <Content Include="Views\Brands\Details.cshtml" />
-    <Content Include="Views\Brands\Edit.cshtml" />
-    <Content Include="Views\Brands\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Category cu\Create.cshtml" />
-    <Content Include="Views\Category cu\Details.cshtml" />
-    <Content Include="Views\Category cu\Edit.cshtml" />
-    <Content Include="Views\Category cu\Index.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Demo\SayHello.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Demo.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Products\Cart.cshtml" />
-    <Content Include="Views\Products\CheckOut.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Shared\Admin_Layout.cshtml" />
-    <Content Include="Views\Shared\Aside.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Shared\Header.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
@@ -2283,6 +2243,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Product\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>

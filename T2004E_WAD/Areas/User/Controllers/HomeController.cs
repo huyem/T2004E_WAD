@@ -103,8 +103,7 @@ namespace T2004E_WAD.Areas.User.Controllers
         // GET: User/Home
         public ActionResult Index()
         {
-            if (Session[Constant.USER_SESSION] == null) ;
-            return RedirectToAction("Index", "Home");
+         
 
             var products = db.Products.ToList();  
           
